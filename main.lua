@@ -17,7 +17,7 @@ local Rayfield = loadstring(game:HttpGet(
 -- WINDOW
 
 local Window = Rayfield:CreateWindow({
-    Name = "RussiaHub",
+    Name = "RussiaHub 1.0",
     LoadingTitle = "RussiaHub",
     LoadingSubtitle = "Loading, Please be paintent!",
 
