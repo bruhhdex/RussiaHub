@@ -233,7 +233,7 @@ local SpeedEnabled = false
 
 PlayerTab:CreateToggle({
 
-    Name = "Speedhack (WalkSpeed)",
+    Name = "Speedhack",
 
     CurrentValue = false,
 
