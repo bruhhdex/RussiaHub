@@ -1,6 +1,6 @@
--- RussiaHub by menya mogaet werumov1337
+-- Russia Hub by evil werumov
 
--- Version 1.1 (corrected)
+-- Version 1.1
 
 -- Game Compatibility Check DO NOT CHANGE IN ANY WAY
 
@@ -26,9 +26,9 @@ local Rayfield = loadstring(game:HttpGet("https://sirius.menu/rayfield"))()
 
 local Window = Rayfield:CreateWindow({
 
-    Name = "RussiaHub 1.1",
+    Name = "Russia Hub 1.1",
 
-    LoadingTitle = "RussiaHub",
+    LoadingTitle = "Russia Hub",
 
     LoadingSubtitle = "Loading, Please be patient!",
 
@@ -45,11 +45,11 @@ local Window = Rayfield:CreateWindow({
 
     KeySettings = {
 
-        Title = "RussiaHub",
+        Title = "Russia Hub",
 
         Subtitle = "andrey pups kstati",
 
-        Note = "Enter the RussiaHub key from our discord server.",
+        Note = "Enter the Russia Hub key from our discord server.",
 
         FileName = "RussiaHub",
 
@@ -75,9 +75,21 @@ HomeTab:CreateSection("Welcome")
 
 HomeTab:CreateParagraph({
 
-    Title = "RussiaHub",
+    Title = "Russia Hub",
 
-    Content = "Welcome to RussiaHub! Version 1.1"
+    Content = "Welcome to Russia Hub! Version 1.1"
+
+})
+
+
+HomeTab:CreateSection("Credits")
+
+
+HomeTab:CreateParagraph({
+
+    Title = "Made by evil werumov",
+
+    Content = "Russia Hub — developed and maintained by evil werumov. Thanks for using the hub."
 
 })
 
@@ -317,9 +329,9 @@ end)
 
 Rayfield:Notify({
 
-    Title = "RussiaHub",
+    Title = "Russia Hub",
 
-    Content = "RussiaHub loaded successfully!",
+    Content = "Russia Hub loaded!",
 
     Duration = 5
 
