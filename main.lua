@@ -4,20 +4,6 @@
 
 -- Game Compatibility Check DO NOT CHANGE IN ANY WAY
 
-
-local SupportedGame = 4987467534
-
-
-if game.PlaceId ~= SupportedGame then
-
-    game.Players.LocalPlayer:Kick("Game not supported, See our supported games list at discord")
-
-    return
-
-end
-
-
-
 local Rayfield = loadstring(game:HttpGet("https://sirius.menu/rayfield"))()
 
 
