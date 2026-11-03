@@ -1,13 +1,5 @@
 -- RussiaHub by menya mogaet werumov1337
 -- Version 1.0
--- Game Compatibility Check DO NOT CHANGE IN ANY WAY
-
-local SupportedGame = 4987467534
-
-if game.PlaceId ~= SupportedGame then
-    game.Players.LocalPlayer:Kick("Game not supported, See our supported games list at discord")
-    return
-end
 
 
 local Rayfield = loadstring(game:HttpGet(
@@ -49,7 +41,7 @@ HomeTab:CreateSection("Welcome")
 
 HomeTab:CreateParagraph({
     Title = "RussiaHub",
-    Content = "Welcome to RussiaHub! Version 1.0"
+    Content = "Welcome to RussiaHub! Version 1.1"
 })
 
 -- ESP TAB
