@@ -18,7 +18,7 @@ local Rayfield = loadstring(game:HttpGet(
 
 local Window = Rayfield:CreateWindow({
     Name = "RussiaHub 1.1",
-    LoadingTitle = "RussiaHub",
+    LoadingTitle = "Thanks for using our script!",
     LoadingSubtitle = "Loading, Please be paintent!",
 
     ConfigurationSaving = {
@@ -164,29 +164,6 @@ workspace.DescendantAdded:Connect(function(object)
     addLarryESP(object)
 
 end)
-
--- PLAYER TAB
-
-local PlayerTab = Window:CreateTab(
-    "Player",
-    4483362458
-)
-
-PlayerTab:CreateSection("Movement")
-
-local TPWalkSpeed = 2
-
-PlayerTab:CreateSlider({
-    Name = "Speedhack (TPWalk)",
-    Range = {1, 10},
-    Increment = 0.5,
-    Suffix = "Speed",
-    CurrentValue = 2,
-
-    Callback = function(Value)
-        TPWalkSpeed = Value
-    end
-})
 
 
 -- CLEANUP
