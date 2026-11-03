@@ -10,7 +10,7 @@ local Rayfield = loadstring(game:HttpGet(
 local Window = Rayfield:CreateWindow({
     Name = "RussiaHub",
     LoadingTitle = "RussiaHub",
-    LoadingSubtitle = "Universal Script",
+    LoadingSubtitle = "Loading, Please be paintent!",
 
     ConfigurationSaving = {
         Enabled = false
