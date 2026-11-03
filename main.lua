@@ -151,6 +151,29 @@ ESPTab:CreateColorPicker({
     end
 })
 
+-- PLAYER TAB
+
+local PlayerTab = Window:CreateTab(
+    "Player",
+    4483362458
+)
+
+PlayerTab:CreateSection("Movement")
+
+local TPWalkSpeed = 2
+
+PlayerTab:CreateSlider({
+    Name = "Speedhack",
+    Range = {1, 5},
+    Increment = 0.5,
+    Suffix = "Speed",
+    CurrentValue = 2,
+
+    Callback = function(Value)
+        TPWalkSpeed = Value
+    end
+})
+
 -- DETECT NEW LARRY OBJECTS
 
 workspace.DescendantAdded:Connect(function(object)
