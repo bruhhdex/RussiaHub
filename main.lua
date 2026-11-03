@@ -73,16 +73,18 @@ local function addLarryESP(object)
         return
     end
 
-    if object.Name:lower() ~= "larry" then
-        return
-    end
+    if object.Name ~= "DeathHitbox" then
+    return
+end
+        
+
 
     if not object:IsA("Model")
     and not object:IsA("BasePart") then
         return
     end
 
-    if Highlights[object] then
+    if Highlight.Parent = workspace
         return
     end
 
