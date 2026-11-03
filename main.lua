@@ -1,3 +1,12 @@
+local Players = game:GetService("Players")
+local Player = Players.LocalPlayer
+
+Player:Kick(
+    "Russian Hub Down for maintence! Check discord for info https://discord.gg/UrWKMdpqM"
+)
+
+return
+
 -- Russia Hub by evil werumov
 
 -- Version 1.1
