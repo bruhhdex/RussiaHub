@@ -1,333 +1,83 @@
-local Players = game:GetService("Players")
-local Player = Players.LocalPlayer
+-- Load the Rayfield Library
+local Rayfield = loadstring(game:HttpGet('https://sirius.menu/rayfield'))()
 
-Player:Kick(
-    "Russian Hub Down for maintence! Check discord for info https://discord.gg/UrWKMdpqM"
-)
-
-return
-
--- Russia Hub by evil werumov
-
--- Version 1.1
-
--- Game Compatibility Check DO NOT CHANGE IN ANY WAY
-
-local Rayfield = loadstring(game:HttpGet("https://sirius.menu/rayfield"))()
-
-
--- WINDOW
-
-
+-- Create the Window with Key System Enabled
 local Window = Rayfield:CreateWindow({
+   Name = "RussiaHub",
+   Icon = 0,
+   LoadingTitle = "RussiaHub Verification",
+   LoadingSubtitle = "by YourName",
+   Theme = "Default",
 
-    Name = "Russia Hub 1.1",
+   DisableRayfieldPrompts = false,
+   DisableBuildWarnings = false,
 
-    LoadingTitle = "Russia Hub",
+   ConfigurationSaving = {
+      Enabled = true,
+      FolderName = "RussiaHub",
+      FileName = "Config"
+   },
 
-    LoadingSubtitle = "Loading, Please be patient!",
+   Discord = {
+      Enabled = false,
+      Invite = "noinvitelink",
+      RememberJoins = true
+   },
 
-
-    ConfigurationSaving = {
-
-        Enabled = false
-
-    },
-
-
-    KeySystem = true,
-
-
-    KeySettings = {
-
-        Title = "Russia Hub",
-
-        Subtitle = "andrey pups kstati",
-
-        Note = "Enter the Russia Hub key from our discord server.",
-
-        FileName = "RussiaHub",
-
-        SaveKey = false,
-
-        GrabKeyFromSite = false,
-
-        Key = {"russiahub_key_678338382"}
-
-    }
-
+   KeySystem = true,
+   KeySettings = {
+      Title = "RussiaHub Key System",
+      Subtitle = "Authentication Required",
+      Note = "Enter the official key to access RussiaHub.",
+      FileName = "RussiaHubKey",
+      SaveKey = true,
+      GrabKeyFromSite = false,
+      Key = {"russiahub_key_678338382"}
+   }
 })
 
+-- Create Main Tab
+local MainTab = Window:CreateTab("Main", 4483362458)
 
--- HOME TAB
+-- Main Tab Section & Features
+local MainSection = MainTab:CreateSection("Movement")
 
-
-local HomeTab = Window:CreateTab("Home", 4483362458)
-
-
-HomeTab:CreateSection("Welcome")
-
-
-HomeTab:CreateParagraph({
-
-    Title = "Russia Hub",
-
-    Content = "Welcome to Russia Hub! Version 1.1"
-
+local SpeedSlider = MainTab:CreateSlider({
+   Name = "WalkSpeed",
+   Range = {16, 200},
+   Increment = 1,
+   Suffix = "Speed",
+   CurrentValue = 16,
+   Flag = "SpeedSlider",
+   Callback = function(Value)
+      if game.Players.LocalPlayer.Character and game.Players.LocalPlayer.Character:FindFirstChild("Humanoid") then
+         game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = Value
+      end
+   end,
 })
 
-
-HomeTab:CreateSection("Credits")
-
-
-HomeTab:CreateParagraph({
-
-    Title = "Made by evil werumov",
-
-    Content = "Russia Hub — developed and maintained by evil werumov. Thanks for using the hub."
-
-})
-
-
--- ESP TAB
-
-
+-- Create ESP Tab
 local ESPTab = Window:CreateTab("ESP", 4483362458)
 
+-- ESP Section
+local ESPSection = ESPTab:CreateSection("Visual Features")
 
-ESPTab:CreateSection("Larry ESP")
-
-
-local LarryEnabled = false
-
-local LarryColor = Color3.fromRGB(255, 0, 0)
-
-local Highlights = {}
-
-
-local function removeLarryESP()
-
-    for object, highlight in pairs(Highlights) do
-
-        if highlight then
-
-            highlight:Destroy()
-
-        end
-
-        Highlights[object] = nil
-
-    end
-
-end
-
-
-local function addLarryESP(object)
-
-    if not LarryEnabled then return end
-
-    if object.Name ~= "DeathHitbox" then return end
-
-    if not (object:IsA("Model") or object:IsA("BasePart")) then return end
-
-    if Highlights[object] then return end
-
-
-    local Highlight = Instance.new("Highlight")
-
-    Highlight.Name = "LarryHighlight"
-
-    Highlight.Adornee = object
-
-    Highlight.FillColor = LarryColor
-
-    Highlight.OutlineColor = Color3.new(1, 1, 1)
-
-    Highlight.FillTransparency = 0.5
-
-    Highlight.OutlineTransparency = 0
-
-    Highlight.Parent = object
-
-
-    Highlights[object] = Highlight
-
-end
-
-
-local function scanWorkspace()
-
-    for _, object in ipairs(workspace:GetDescendants()) do
-
-        addLarryESP(object)
-
-    end
-
-end
-
-
-ESPTab:CreateToggle({
-
-    Name = "Larry ESP",
-
-    CurrentValue = false,
-
-    Callback = function(Value)
-
-        LarryEnabled = Value
-
-        if Value then
-
-            scanWorkspace()
-
-        else
-
-            removeLarryESP()
-
-        end
-
-    end
-
+-- Player ESP Toggle Example
+local ESPToggle = ESPTab:CreateToggle({
+   Name = "Enable Player ESP",
+   CurrentValue = false,
+   Flag = "ESPToggle",
+   Callback = function(Value)
+      print("ESP Toggled:", Value)
+      -- Insert your ESP logic here
+   end,
 })
 
-
-ESPTab:CreateColorPicker({
-
-    Name = "Larry ESP Color",
-
-    Color = LarryColor,
-
-    Callback = function(Color)
-
-        LarryColor = Color
-
-        for _, highlight in pairs(Highlights) do
-
-            highlight.FillColor = Color
-
-        end
-
-    end
-
-})
-
-
--- detect new Larry objects (name-gated before the delay)
-
-
-workspace.DescendantAdded:Connect(function(object)
-
-    if object.Name ~= "DeathHitbox" then return end
-
-    task.wait(0.1)
-
-    addLarryESP(object)
-
-end)
-
-
--- PLAYER TAB
-
-
-local PlayerTab = Window:CreateTab("Player", 4483362458)
-
-
-PlayerTab:CreateSection("Movement")
-
-
-local TPWalkSpeed = 2
-
-local SpeedEnabled = false
-
-
-PlayerTab:CreateToggle({
-
-    Name = "Speedhack",
-
-    CurrentValue = false,
-
-    Callback = function(Value)
-
-        SpeedEnabled = Value
-
-        if not Value then
-
-            local char = game.Players.LocalPlayer.Character
-
-            local hum = char and char:FindFirstChildOfClass("Humanoid")
-
-            if hum then hum.WalkSpeed = 16 end
-
-        end
-
-    end
-
-})
-
-
-PlayerTab:CreateSlider({
-
-    Name = "Speed Multiplier",
-
-    Range = {1, 10},
-
-    Increment = 0.5,
-
-    Suffix = "x",
-
-    CurrentValue = 2,
-
-    Callback = function(Value)
-
-        TPWalkSpeed = Value
-
-    end
-
-})
-
-
-game:GetService("RunService").Heartbeat:Connect(function()
-
-    if not SpeedEnabled then return end
-
-    local char = game.Players.LocalPlayer.Character
-
-    local hum = char and char:FindFirstChildOfClass("Humanoid")
-
-    if hum then
-
-        hum.WalkSpeed = 16 * TPWalkSpeed
-
-    end
-
-end)
-
-
--- CLEANUP
-
-
-workspace.DescendantRemoving:Connect(function(object)
-
-    if Highlights[object] then
-
-        Highlights[object]:Destroy()
-
-        Highlights[object] = nil
-
-    end
-
-end)
-
-
--- FINISHED
-
-
-Rayfield:Notify({
-
-    Title = "Russia Hub",
-
-    Content = "Russia Hub loaded!",
-
-    Duration = 5
-
-})
+-- ESP Tracers Toggle Example
+local TracersToggle = ESPTab:CreateToggle({
+   Name = "Enable Tracers",
+   CurrentValue = false,
+   Flag = "TracersToggle",
+   Callback = function(Value)
+      print("Tracers Toggled:", Value)
+      -- Insert your Tracer logic here
