@@ -21,11 +21,11 @@ local Window = Rayfield:CreateWindow({
     KeySettings = {
         Title = "RussiaHub",
         Subtitle = "Key System",
-        Note = "Enter the RussiaHub key.",
+        Note = "Enter the RussiaHub key from our discord server https://discord.gg/T8pyHSn5e.",
         FileName = "RussiaHub",
-        SaveKey = false,
+        SaveKey = true,
         GrabKeyFromSite = false,
-        Key = {"1234"}
+        Key = {"russiahub_key_678338382"}
     }
 })
 
